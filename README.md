@@ -1,4 +1,4 @@
-# final_project_hms520 \
+# final_project_hms520 
 Name: Meera Beauchamp \
 \
 Teammates: Just me \
@@ -9,7 +9,7 @@ Overall goal of project: Use the California Health Interview Survey (CHIS) data 
 Data can be found here: https://healthpolicy.ucla.edu/chis/data/public-use-data-file/Pages/2017.aspx#dictionaries \
 \
 Plans/Timeline:\
-    12/4: Download data and select variables of interest\
-    12/6: Create several graphs to explore relationships between variables of interest and mental health\
-    12/8: Start creating different models\
-    12/10: Evaluate models\
+    *12/4: Download data and select variables of interest, possible clean data, and group variables\
+    *12/6: Create several graphs to explore relationships between variables of interest and mental health\
+    *12/8: Start creating different models\
+    *12/10: Evaluate models
