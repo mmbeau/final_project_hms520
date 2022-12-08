@@ -5,7 +5,7 @@ Teammates: Just me \
 \
 Format: Analyzing a dataset that uses data wrangling and modeling tools in R \
 \
-Overall goal of project: Use the California Health Interview Survey (CHIS) data to analyze corelates adolescent responses and correlates of improved mental health using data visualization and linear modeling.
+Overall goal of project: Use the California Health Interview Survey (CHIS) data to analyze correlates of increased bmi using data visualization and linear modeling.
 Data can be found here: https://healthpolicy.ucla.edu/chis/data/public-use-data-file/Pages/2017.aspx#dictionaries \
 \
 Plans/Timeline:\
