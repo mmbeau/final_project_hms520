@@ -29,7 +29,7 @@ teen<-rbind(
 
 #Create list of columns of interest
 teen_col<-c( 'tc42b',  'srsex',  
-            'povll','slph',  'ahedtc_p1', 
+            'slph', 
             'bmi_p', 'srage_p',  'te4_p1', 'te6_p1')
 
 #Possible dependent variables
@@ -63,17 +63,15 @@ teen$num_fruit_veg<-teen$te4_p1+ teen$te6_p1
 teen<-subset(teen, select = -c(td27_p1, td30_p1, te4_p1, te6_p1))
 
 #rename columns to something more readable
-names(teen)[names(teen) == "povll"] <- "poverty_lvl" #poverty level
 names(teen)[names(teen) == "slph"] <- "hrs_sleep" #HOURS SLEPT ON WEEKNIGHTS
-names(teen)[names(teen) == "ahedtc_p1"] <- "adult_edu"#ADULT EDUCATIONAL ATTAINMENT (PUF 1 YR RECODE)
 names(teen)[names(teen) == "srage_p"] <- "age"
 
 ggplot(teen, aes(x=bmi_p, y=time_sitting_activity)) + 
   geom_point()
 
 
-vars_to_try<-c( "srsex", "poverty_lvl",
-               "fruit_veg_5","hrs_sleep","adult_edu" ,"age",
+vars_to_try<-c( "srsex", 
+               "fruit_veg_5","hrs_sleep","age",
                "num_fruit_veg")
 
 scatter_plots_func <- function(xvar){
@@ -87,7 +85,7 @@ scatter_plots_func <- function(xvar){
 }
 #xvar<-"park_win_30min"
 lapply(vars_to_try, scatter_plots_func)
-ggplot(teen, aes_(x=teen$bmi_p, y=xvar)) +
+ggplot(teen, aes_(x=teen$bmi_p, y=xvar, color = sex, shape= age)) +
   geom_point() 
 ggsave("xvars.pdf")
 
@@ -111,13 +109,11 @@ m5<-lm(bmi_p ~ hrs_sleep, data = filter(teen, test==0))#stat sig + negcorrelatio
 # vcov(m1)
 summary(m5)
 
-m6<-lm(bmi_p ~ adult_edu, data = filter(teen, test==0))#stat sig + negcorrelation
-summary(m6)
-
 m7<-lm(bmi_p ~ age, data = filter(teen, test==0))#stat sig + pos correlation
 summary(m7)
 
 m8<-lm(bmi_p ~ num_fruit_veg, data = filter(teen, test==0)) #stat sig + negcorrelation
 summary(m8)
 
-
+m9<-lm(bmi_p ~ num_fruit_veg + hrs_sleep, data = filter(teen, test==0)) #stat sig + negcorrelation
+summary(m9)
