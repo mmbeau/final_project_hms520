@@ -9,6 +9,7 @@ setwd("~/Documents/Classes/hms520")
 #Load packages
 library(dplyr)
 library(readr)
+library(haven)
 
 #Read in data
 teen_2017 <- read_dta("teen_2017_stata/TEEN.dta")
