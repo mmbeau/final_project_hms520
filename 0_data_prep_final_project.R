@@ -5,7 +5,7 @@
 ##############################################################################
 rm(list = ls())
 #set working directory
-setwd("~/Documents/Classes/hms520")
+setwd("~/Documents/Classes/hms520/final_project_hms520")
 #Load packages
 library(dplyr)
 library(readr)
