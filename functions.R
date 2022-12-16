@@ -13,7 +13,7 @@ scatter_plots_func <- function(xvar){
   # Need to use print() to actually produce the plot
   print(plot_scat)
   # Save to PDF
-  ggsave(sprintf("%s.pdf", xvar))
+  ggsave(sprintf("graphs/%s.pdf", xvar))
 }
 
 #Function to plot the residuals of model
@@ -23,8 +23,8 @@ plot_summary_func<- function(x, model_name) {
     abline(0,0)
 }
 
-#Function to calculate RMSE of model
-get_rsme <- function(y_pred, na_rm = FALSE) {# 
+#Function to calculate RMSE of model and print
+get_rsme <- function(y_pred, na_rm = FALSE) {
   outsample_rsme <- with(
     filter(teen, test == 1),
     sqrt(mean((bmi_p - get(y_pred))^2, na.rm = na_rm))
