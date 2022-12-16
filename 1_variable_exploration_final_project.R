@@ -26,6 +26,20 @@ vars_to_try<-c( "srsex", "poverty_lvl",
 #---------------------------------------------------------------------------------------
 lapply(vars_to_try, scatter_plots_func)
 
+scatter_plots_func(teen$age)
+
+#Function to create scatter plots of bmi and possible predictors
+scatter_plots_func <- function(xvar){
+  plot_scat<- ggplot(teen, aes_(x=as.name(xvar) ,y=teen$bmi_p)) +
+    labs(title = paste0('BMI by ', xvar)) +
+    ylab('bmi') +
+    geom_point() 
+  # Need to use print() to actually produce the plot
+  print(plot_scat)
+  # Save to PDF
+  ggsave(sprintf("%s.pdf", xvar))
+}
+
 #---------------------------------------------------------------------------------------
 #Explore variable relationship further and look for statistical significance -----------
 #through uni-variate regressions--------------------------------------------------------

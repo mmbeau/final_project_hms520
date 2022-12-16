@@ -7,6 +7,8 @@
 #Function to create scatter plots of bmi and possible predictors
 scatter_plots_func <- function(xvar){
   plot_scat<- ggplot(teen, aes_(x=as.name(xvar) ,y=teen$bmi_p)) +
+    labs(title = paste0('BMI by ', xvar)) +
+    ylab('bmi') +
     geom_point() 
   # Need to use print() to actually produce the plot
   print(plot_scat)
@@ -22,17 +24,17 @@ plot_summary_func<- function(x, model_name) {
 }
 
 #Function to calculate RMSE of model
-get_rsme <- function(y, y_pred, mod, na_rm = FALSE) {
+get_rsme <- function(y_pred, na_rm = FALSE) {# 
   outsample_rsme <- with(
     filter(teen, test == 1),
-    sqrt(mean((y - y_pred)^2, na.rm = na_rm))
+    sqrt(mean((bmi_p - get(y_pred))^2, na.rm = na_rm))
   )
   insample_rsme <- with(
     filter(teen, test == 0),
-    sqrt(mean((y - y_pred)^2, na.rm = na_rm))
+    sqrt(mean((bmi_p - get(y_pred))^2, na.rm = na_rm))
   )
-  print(paste(mod, "outsample rsme", outsample_rsme))
-  print(paste(mod, "insample rsme", insample_rsme))
+  print(paste(y_pred,"outsample rsme", outsample_rsme))# 
+  print(paste(y_pred,"insample rsme", insample_rsme))# 
 }
 
 

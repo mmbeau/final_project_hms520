@@ -24,27 +24,25 @@ teen<-rbind(
 )
 
 #Create list of columns of interest
-teen_col<-c( 'tc42b',  'srsex',  
-            'slph', 'povll', 'fv5day',
+teen_col<-c('srsex',  'slph', 'povll', 'fv5day',
             'bmi_p', 'srage_p',  'te4_p1', 'te6_p1')
 #Subset df to columns of interest
 teen<-subset(teen, select = teen_col)
 
 #Create training and testing split
-seed <- 104L
+seed <- 104L #set seed to be replicable
 set.seed(seed)
 
 n <- nrow(teen)
 #Set 10% of data to test
 n_test <- as.integer(0.1 * n) 
-
 i_test <- sample.int(n, size = n_test)
 teen$test <- 0
 teen[i_test, "test"] <- 1
 
 
 #Variable creation
-teen$num_fruit_veg<-teen$te4_p1+ teen$te6_p1
+teen$num_fruit_veg<-teen$te4_p1+ teen$te6_p1 #num fruits + num veg consumed a day
 
 #Drop columns
 teen<-subset(teen, select = -c(te4_p1, te6_p1))
